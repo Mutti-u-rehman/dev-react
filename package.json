@@ -1,0 +1,31 @@
+{
+  "name": "react-learning",
+  "version": "1.0.0",
+  "description": "React core concept",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mutti-u-rehman/dev-react"
+  },
+  "keywords": [
+    "reactjs",
+    "frontend",
+    "development",
+    "web-development"
+  ],
+  "author": "Mutti u rehman",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.0",
+    "process": "^0.11.10"
+  }
+}
