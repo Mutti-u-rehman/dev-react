@@ -1,9 +1,8 @@
 import { CDN_URL_2 } from "../utiles/constant";
 
 export default RestaurantCard = (props) => {
-  console.log(props.resData.info);
   const { name, cloudinaryImageId, cuisines, avgRating, costForTwo, sla } =
-    props?.resData.info;
+    props?.resData?.info;
   return (
     <div className="card-wrapper">
       <img src={CDN_URL_2 + cloudinaryImageId} alt="Cusine image" />
