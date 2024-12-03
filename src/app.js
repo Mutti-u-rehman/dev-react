@@ -1,6 +1,21 @@
 import React from "react";
 import ReactDom from "react-dom/client";
+import { StrictMode } from "react";
+import Header from "./components/Header";
+import Body from "./components/body";
 
-const element = React.createElement("h1", { id: "title" }, "Hello world");
+export default AppLayout = () => {
+  return (
+    <div className="app-wrapper">
+      <Header />
+      <Body />
+    </div>
+  );
+};
+
 const root = ReactDom.createRoot(document.getElementById("root"));
-root.render(element);
+root.render(
+  <StrictMode>
+    <AppLayout />
+  </StrictMode>
+);
