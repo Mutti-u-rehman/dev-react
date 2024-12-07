@@ -8,6 +8,7 @@ export default Body = () => {
       ?.restaurants;
 
   const [restaurants, setRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -27,6 +28,23 @@ export default Body = () => {
   return (
     <div className="body-wrapper">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => {
+              console.log(e.target.value);
+              setSearchText(e?.target?.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              console.log(searchText);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {

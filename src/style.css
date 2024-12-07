@@ -30,6 +30,17 @@ li {
   /* border: 1px solid #c6c5c5; */
 }
 
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search {
+  display: flex;
+  gap: 4px;
+}
+
 .filter-btn {
   cursor: pointer;
   margin: 8px 0px;
