@@ -3,11 +3,13 @@ import { RESPONSE } from "../utiles/mockData";
 import { useEffect, useState } from "react";
 
 export default Body = () => {
-  const response =
-    RESPONSE?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-      ?.restaurants;
+  // const response =
+  //   RESPONSE?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+  //     ?.restaurants;
 
   const [restaurants, setRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants]= useState([]);
+
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -23,6 +25,7 @@ export default Body = () => {
       resJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setRestaurants(allRestaurants);
+    setFilteredRestaurants(allRestaurants);
   };
 
   return (
@@ -33,13 +36,13 @@ export default Body = () => {
             type="text"
             value={searchText}
             onChange={(e) => {
-              console.log(e.target.value);
               setSearchText(e?.target?.value);
             }}
           />
           <button
             onClick={() => {
-              console.log(searchText);
+              const filteredRes = restaurants.filter(res => res?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase()?.trim()));
+              setFilteredRestaurants(filteredRes);
             }}
           >
             Search
@@ -49,16 +52,16 @@ export default Body = () => {
           className="filter-btn"
           onClick={() => {
             const filteredRestaurants = restaurants.filter(
-              (res) => res.info.avgRating > 4.3
+              (res) => res?.info?.avgRating > 4.3
             );
-            setRestaurants(filteredRestaurants);
+            setFilteredRestaurants(filteredRestaurants);
           }}
         >
           Top rated resturant
         </button>
       </div>
       <div className="res-container">
-        {restaurants.map((res) => (
+        {filteredRestaurants.map((res) => (
           <RestaurantCard key={res?.info?.id} resData={res} />
         ))}
       </div>

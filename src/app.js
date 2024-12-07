@@ -2,7 +2,7 @@ import React from "react";
 import ReactDom from "react-dom/client";
 import { StrictMode } from "react";
 import Header from "./components/Header";
-import Body from "./components/body";
+import Body from "./components/Body";
 
 export default AppLayout = () => {
   return (
