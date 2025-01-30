@@ -1,5 +1,10 @@
-const ContactUs = () => {
-  return <h1>Contact us</h1>;
+// rafce
+const Contact = () => {
+  return (
+    <div className="contact-wrapper">
+      <h1>Contact us</h1>
+    </div>
+  );
 };
 
-export default ContactUs;
+export default Contact;

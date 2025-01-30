@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { RESPONSE } from "../utiles/mockData";
 import { useEffect, useState } from "react";
-import { PROXY_API, RESTAURANT_API } from "../utiles/constant";
+import { PROXY_API, PROXY_CORS_API, RESTAURANT_API } from "../utiles/constant";
 
 export default Body = () => {
   // const response =
@@ -18,13 +18,22 @@ export default Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const res = await fetch(`${RESTAURANT_API}`);
-    const resJson = await res?.json();
-    const allRestaurants =
-      resJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    setRestaurants(allRestaurants);
-    setFilteredRestaurants(allRestaurants);
+    try {
+      const res = await fetch(`${PROXY_CORS_API}${RESTAURANT_API}`);
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+
+      const resJson = await res?.json();
+      const allRestaurants =
+        resJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+      setRestaurants(allRestaurants);
+      setFilteredRestaurants(allRestaurants);
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
   };
 
   return (
