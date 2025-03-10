@@ -6,6 +6,7 @@ import Body from "./components/Body";
 import { BrowserRouter, Routes, Route } from "react-router";
 import AboutUs from "./components/About-us";
 import ContactUs from "./components/contact-us";
+import RestaurantMenu from "./components/RestaurantMenu";
 
 export default AppLayout = () => {
   return (
@@ -23,6 +24,7 @@ root.render(
       <Route path="/" element={<AppLayout />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/contact" element={<ContactUs />} />
+      <Route path="/restaurantMenu/:resID" element={<RestaurantMenu />} />
     </Routes>
   </BrowserRouter>
 );

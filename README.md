@@ -6,3 +6,4 @@
 4 - useRouteError
 5 - react browser router
 6 - virtual dom vs real dom
+7 - client side vs server side routing
