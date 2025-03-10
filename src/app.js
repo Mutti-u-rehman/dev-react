@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDom from "react-dom/client";
-import { StrictMode } from "react";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
 import AboutUs from "./components/About-us";
 import ContactUs from "./components/contact-us";
 import RestaurantMenu from "./components/RestaurantMenu";
+import NotFound from "./components/NotFound";
+import ErrorPage from "./components/ErrorPage";
 
 export default AppLayout = () => {
   return (
@@ -16,6 +17,28 @@ export default AppLayout = () => {
     </div>
   );
 };
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/about-us",
+    element: <AboutUs />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/contact-us",
+    element: <ContactUs />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
+]);
 
 const root = ReactDom.createRoot(document.getElementById("root"));
 root.render(
@@ -30,3 +53,7 @@ root.render(
 );
 
 // const appRoutes =
+// <React.StrictMode>
+//   <RouterProvider router={router} />
+// </React.StrictMode>
+// );
