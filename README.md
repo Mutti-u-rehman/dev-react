@@ -7,3 +7,20 @@
 5 - react browser router
 6 - virtual dom vs real dom
 7 - client side vs server side routing
+
+
+
+ # short cuts
+
+ 1 - rafce create default export component as per file name
+ 
+
+ # Hooks
+
+ 1 - useState
+ 2 - useEffect
+ 3 - useRouteError Accesses the error thrown during an action, loader, or component render to be used in a route module Error Boundary.
+
+ # Q/A
+
+ 1 - Client side and server side routing
