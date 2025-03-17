@@ -1,26 +1,37 @@
 import { useEffect, useState } from "react";
-import { MENU_API } from "../utiles/constant";
+import { NEW_MENU_API } from "../utiles/constant";
 
 const RestaurantMenu = () => {
   const [menuInfo, setMenuInfo] = useState();
 
-  useEffect(async () => {
-    const data = await fetch(MENU_API);
-    const res = await data.json();
+  useEffect(() => {
+    async function fetchMenu() {
+      const data = await fetch(NEW_MENU_API);
+      const res = await data.json();
 
-    console.log(res);
-    setMenuInfo(res);
+      console.log(res);
+      setMenuInfo(res?.data?.cards);
+    }
+
+    fetchMenu();
   }, []);
+
+  if (!menuInfo) return <></>;
+
+  const menuItems =
+    menuInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card
+      ?.itemCards;
 
   return (
     <>
-      <h1>Name of the Restaurant</h1>
+      <h1>{menuInfo[0]?.card?.card?.text}</h1>
       <h3>Menu</h3>
 
       <ul>
-        <li>Baryani</li>
-        <li>Burger</li>
-        <li>Diet Coke</li>
+        {menuItems.map((item) => {
+          const { name, price, id } = item?.card?.info;
+          return <li key={id}>{name + " " + price}</li>;
+        })}
       </ul>
     </>
   );

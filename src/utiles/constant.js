@@ -18,3 +18,6 @@ export const RESTAURANT_API =
 
 // export const MENU_API = "
 // https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId=5934&catalog_qa=undefined&submitAction=ENTER";
+
+export const NEW_MENU_API =
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId=289694&catalog_qa=undefined&query=Poori&submitAction=ENTER";
