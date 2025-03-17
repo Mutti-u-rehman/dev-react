@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { RESPONSE } from "../utiles/mockData";
 import { useEffect, useState } from "react";
 import { PROXY_API, PROXY_CORS_API, RESTAURANT_API } from "../utiles/constant";
+import { Link } from "react-router";
 
 export default Body = () => {
   // const response =
@@ -19,7 +20,7 @@ export default Body = () => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch(`${PROXY_CORS_API}${RESTAURANT_API}`);
+      const res = await fetch(`${RESTAURANT_API}`);
 
       if (!res.ok) {
         throw new Error(`HTTP error! Status: ${res.status}`);
@@ -74,7 +75,9 @@ export default Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurants?.map((res) => (
-          <RestaurantCard key={res?.info?.id} resData={res} />
+          <Link to={"restaurantMenu/" + res?.info?.id} key={res?.info?.id}>
+            <RestaurantCard resData={res} />
+          </Link>
         ))}
       </div>
     </div>

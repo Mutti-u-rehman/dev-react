@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { NEW_MENU_API } from "../utiles/constant";
+import { useParams } from "react-router";
 
 const RestaurantMenu = () => {
   const [menuInfo, setMenuInfo] = useState();
+  const params = useParams();
 
   useEffect(() => {
     async function fetchMenu() {
-      const data = await fetch(NEW_MENU_API);
+      const data = await fetch(NEW_MENU_API + params.resID);
       const res = await data.json();
 
       console.log(res);
@@ -25,14 +27,20 @@ const RestaurantMenu = () => {
   return (
     <>
       <h1>{menuInfo[0]?.card?.card?.text}</h1>
-      <h3>Menu</h3>
+      {menuItems ? (
+        <>
+          <h3>Menu</h3>
 
-      <ul>
-        {menuItems.map((item) => {
-          const { name, price, id } = item?.card?.info;
-          return <li key={id}>{name + " " + price}</li>;
-        })}
-      </ul>
+          <ul>
+            {menuItems.map((item) => {
+              const { name, price, id } = item?.card?.info;
+              return <li key={id}>{name + " " + price}</li>;
+            })}
+          </ul>
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 };
