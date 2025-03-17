@@ -67,3 +67,9 @@ h3,
 h4 {
   margin: 2px 4px;
 }
+
+.user-info {
+  padding: 40px;
+  border: 1px solid gray;
+  width: fit-content;
+}
