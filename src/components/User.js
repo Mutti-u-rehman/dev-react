@@ -1,6 +1,7 @@
 import { useState } from "react";
 const User = ({ name, location }) => {
-  const [count] = useState(0);
+  const [count, setCount] = useState(0);
+
   return (
     <>
       <div className="user-info">
