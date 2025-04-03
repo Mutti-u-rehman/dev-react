@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NEW_MENU_API } from "../utiles/constant";
+import { NEW_MENU_API } from "../utiles/constant.js";
 import { useParams } from "react-router";
 
 const RestaurantMenu = () => {

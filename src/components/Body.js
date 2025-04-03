@@ -1,7 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
-import { RESPONSE } from "../utiles/mockData";
 import { useEffect, useState } from "react";
-import { PROXY_API, PROXY_CORS_API, RESTAURANT_API } from "../utiles/constant";
+import { RESTAURANT_API } from "../utiles/constant";
 import { Link } from "react-router";
 
 export default Body = () => {

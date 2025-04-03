@@ -5,8 +5,14 @@ class UserClass extends React.Component {
 
     this.state = {
       count: 0,
+      user: undefined
     };
   }
+
+  async componentDidMount() {
+   
+  }
+
   render() {
     const { name, location } = this.props;
     const { count } = this.state;
