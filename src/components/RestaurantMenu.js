@@ -5,7 +5,7 @@ const RestaurantMenu = () => {
   const params = useParams();
   const menuInfo = useRestaurantMenu(params.resID);
 
-  if (!menuInfo) return <></>;
+  if (!menuInfo) return <></>; // we can show shimmer here
 
   const menuItems =
     menuInfo[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card?.card
@@ -26,7 +26,7 @@ const RestaurantMenu = () => {
           </ul>
         </>
       ) : (
-        ""
+        "" // shimmer  here
       )}
     </>
   );

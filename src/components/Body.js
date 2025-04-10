@@ -2,17 +2,23 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import useRestaurantList from "../utiles/hooks/useRestaurantList";
+import useOnlineStatus from "../utiles/hooks/useIsOnline";
 
 export default Body = () => {
 
-  const {
+  const [
     filteredRestaurants,
     searchText,
     setSearchText
-  } = useRestaurantList();
+   ] = useRestaurantList();
+
+  const isUserOnline = useOnlineStatus();
 
   // console.log(filteredRestaurants[0]?.info?.id);
 
+  if (!isUserOnline) { 
+    return <h1>Looks like you are not online </h1>;
+  }
 
   return (
     <div className="body-wrapper">
@@ -43,8 +49,11 @@ export default Body = () => {
           Top rated resturant
         </button>
       </div>
+
       <div className="res-container">
         {filteredRestaurants?.map((res) => (
+
+          
           <Link to={"restaurantMenu/" + res?.info?.id} key={res?.info?.id}>
             <RestaurantCard resData={res} />
           </Link>

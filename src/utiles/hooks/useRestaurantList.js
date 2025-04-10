@@ -39,12 +39,8 @@ const useRestaurantList = () => {
         setFilteredRestaurants(filteredRestaurantResult);
     }
 
-    console.log("Filtered Restaurants: ", filteredRestaurants);
-
-    return [filteredRestaurants, searchText, setSearchText]; // Return the state and setter function for searchText
+    // Return the state and setter function for searchText
+    return [filteredRestaurants, searchText, setSearchText];
 }
-
-
-
 
 export default useRestaurantList;
