@@ -22,3 +22,8 @@
 # Q/A
 
 1 - Client side and server side routing
+
+# Code Improvement
+
+1 - custom hooks
+2 - Lazy loading - Chunking - code spliting - Dynamic loading - Dynamic bundling - On demand loading
