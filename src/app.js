@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDom from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,7 +8,6 @@ import ContactUs from "./components/contact-us";
 import RestaurantMenu from "./components/RestaurantMenu";
 import NotFound from "./components/NotFound";
 import ErrorPage from "./components/ErrorPage";
-
 export default AppLayout = () => {
   return (
     <div className="app-wrapper">
@@ -18,28 +17,38 @@ export default AppLayout = () => {
   );
 };
 
+const GroceryComponent = lazy(() => import("./components/Grocery"));
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
     children: [
-      { path: "/", element: <Body />},
+      { path: "/", element: <Body /> },
       {
         path: "/about-us",
-        element: <AboutUs />
+        element: <AboutUs />,
       },
       {
         path: "/contact-us",
-        element: <ContactUs />
+        element: <ContactUs />,
       },
       {
         path: "/restaurantMenu/:resID",
-        element: <RestaurantMenu />
-      }
+        element: <RestaurantMenu />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h4>Loading ...</h4>}>
+            <GroceryComponent />
+          </Suspense>
+        ),
+      },
     ],
     errorElement: <ErrorPage />,
   },
-  
+
   // {
   //   path: "*",
   //   element: <NotFound />,
@@ -57,8 +66,7 @@ root.render(
   //   </Routes>
   // </BrowserRouter>
 
-
-<React.StrictMode>
- <RouterProvider router={router} />
-</React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
