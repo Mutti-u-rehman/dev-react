@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utiles/constant";
 import { Link } from "react-router";
+import useOnlineStatus from "../utiles/hooks/useIsOnline";
 
 const Header = () => {
   const [isLogin, SetIsLogin] = useState(true);
+  const isUserOnline = useOnlineStatus();
+
   return (
     <div className="header-wrapper">
       <div className="logo">

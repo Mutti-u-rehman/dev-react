@@ -1,40 +1,24 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
-import { RESTAURANT_API } from "../utiles/constant";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import useRestaurantList from "../utiles/hooks/useRestaurantList";
+import useOnlineStatus from "../utiles/hooks/useIsOnline";
 
 export default Body = () => {
-  // const response =
-  //   RESPONSE?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-  //     ?.restaurants;
 
-  const [restaurants, setRestaurants] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [
+    filteredRestaurants,
+    searchText,
+    setSearchText
+   ] = useRestaurantList();
 
-  const [searchText, setSearchText] = useState("");
+  const isUserOnline = useOnlineStatus();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // console.log(filteredRestaurants[0]?.info?.id);
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch(`${RESTAURANT_API}`);
-
-      if (!res.ok) {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      }
-
-      const resJson = await res?.json();
-      const allRestaurants =
-        resJson?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
-      setRestaurants(allRestaurants);
-      setFilteredRestaurants(allRestaurants);
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  };
+  if (!isUserOnline) { 
+    return <h1>Looks like you are not online </h1>;
+  }
 
   return (
     <div className="body-wrapper">
@@ -44,36 +28,32 @@ export default Body = () => {
             type="text"
             value={searchText}
             onChange={(e) => {
-              setSearchText(e?.target?.value);
+              // setSearchText(e?.target?.value)
             }}
           />
           <button
-            onClick={() => {
-              const filteredRes = restaurants.filter((res) =>
-                res?.info?.name
-                  ?.toLowerCase()
-                  ?.includes(searchText.toLowerCase()?.trim())
-              );
-              setFilteredRestaurants(filteredRes);
-            }}
+            // onClick={() => { setFilteredRestaurants(searchText) }}
           >
             Search
           </button>
         </div>
         <button
           className="filter-btn"
-          onClick={() => {
-            const filteredRestaurants = restaurants?.filter(
-              (res) => res?.info?.avgRating > 4.3
-            );
-            setFilteredRestaurants(filteredRestaurants);
-          }}
+          // onClick={() => {
+          //   const filteredRestaurants = restaurants?.filter(
+          //     (res) => res?.info?.avgRating > 4.3
+          //   );
+          //   setFilteredRestaurants(filteredRestaurants);
+          // }}
         >
           Top rated resturant
         </button>
       </div>
+
       <div className="res-container">
         {filteredRestaurants?.map((res) => (
+
+          
           <Link to={"restaurantMenu/" + res?.info?.id} key={res?.info?.id}>
             <RestaurantCard resData={res} />
           </Link>
