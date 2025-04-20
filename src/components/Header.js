@@ -8,12 +8,12 @@ const Header = () => {
   const isUserOnline = useOnlineStatus();
 
   return (
-    <div className="header-wrapper">
-      <div className="logo">
+    <div className="flex justify-between items-center">
+      <div className="w-20">
         <img src={LOGO_URL} alt="logo of the website"></img>
       </div>
-      <div className="menu-list">
-        <ul>
+      <div>
+        <ul className="flex flex-wrap gap-3">
           <li>
             <Link to="/">Home</Link>
           </li>
