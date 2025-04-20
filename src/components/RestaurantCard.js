@@ -6,7 +6,8 @@ export default RestaurantCard = (props) => {
   return (
     <div className="card-wrapper">
       <img src={CDN_URL_2 + cloudinaryImageId} alt="Cusine image" />
-      <h3>{name}</h3>
+      <h3 className="text-3xl font-bold underline">{name}</h3>
+
       <h4>{cuisines.join(", ")}</h4>
       <h4>{avgRating}</h4>
       <h4>{costForTwo}</h4>
