@@ -5,11 +5,11 @@ import useRestaurantList from "../utiles/hooks/useRestaurantList";
 import useOnlineStatus from "../utiles/hooks/useIsOnline";
 import { withPromotedLabel } from "../components/RestaurantCard";
 
-export default Body = () => {
+const  Body = () => {
   const [filteredRestaurants, searchText, setSearchText] = useRestaurantList();
 
   const isUserOnline = useOnlineStatus();
-  console.log(filteredRestaurants);
+  // console.log(filteredRestaurants);
 
   // console.log(filteredRestaurants[0]?.info?.id);
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
@@ -62,3 +62,5 @@ export default Body = () => {
     </div>
   );
 };
+
+export default Body;

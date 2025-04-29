@@ -8,7 +8,8 @@ import ContactUs from "./components/contact-us";
 import RestaurantMenu from "./components/RestaurantMenu";
 import NotFound from "./components/NotFound";
 import ErrorPage from "./components/ErrorPage";
-export default AppLayout = () => {
+
+export const AppLayout = () => {
   return (
     <div className="app-wrapper">
       <Header />
@@ -16,6 +17,7 @@ export default AppLayout = () => {
     </div>
   );
 };
+
 
 const GroceryComponent = lazy(() => import("./components/Grocery"));
 

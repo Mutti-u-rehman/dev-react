@@ -5,7 +5,7 @@ import User from './User';
 class AboutUs extends Component {
   constructor(props) { 
     super(props);
-    console.log("Constructor");
+    // console.log("Constructor");
 
     this.state = {
       user: {name: 'default', location: 'default', bio: 'default'}
@@ -13,11 +13,11 @@ class AboutUs extends Component {
   }
 
   async componentDidMount() {
-    console.log("Component Did Mount");
+    // console.log("Component Did Mount");
 
     const data = await fetch("https://api.github.com/users/mutti-u-rehman");
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     this.setState({
       user: json
     });
@@ -25,7 +25,7 @@ class AboutUs extends Component {
 
   render() {
     const { name, location, bio } = this.state.user;
-    console.log("Render");
+    // console.log("Render");
     return (
       <>
         <h1>ABOUT US</h1>

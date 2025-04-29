@@ -5,7 +5,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "parcel",
-    "start-2": "rm -rf .parcel-cache parcel --no-cache",
+    "clean": "rm -rf .parcel-cache node_modules package-lock.json",
     "build": "parcel build",
     "test": "jest"
   },
